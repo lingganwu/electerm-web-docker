@@ -5,7 +5,7 @@ on:
     - cron: '0 18 * * *' # 每天北京时间凌晨 2:00 自动定时运行（查漏补缺）
   workflow_dispatch: # 允许你在 GitHub 网页端手动点击按钮，随时一键强制触发构建
   push:
-    branches: [ main ] # 极其重要：当你的 main 分支有任何变动（包括你同步了作者的更新）时，自动触发构建
+    branches: [ main ] # 当你的 main 分支有任何变动（包括你同步了作者的更新）时，自动触发构建
 
 jobs:
   build-and-push:
@@ -14,6 +14,18 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Get Latest Version (动态获取官方最新真实版本号)
+        id: get_version
+        run: |
+          # 实时去官方拉取最新的 package.json 并提取真实版本号
+          VERSION=$(curl -s https://raw.githubusercontent.com/electerm/electerm-web/main/package.json | grep '"version":' | head -1 | awk -F '"' '{print $4}')
+          if [ -z "$VERSION" ]; then
+            VERSION="latest"
+          fi
+          # 将版本号变量写入环境变量，供后续步骤调用
+          echo "REAL_VERSION=$VERSION" >> $GITHUB_ENV
+          echo "成功获取当前最新真实版本号: $VERSION"
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -27,7 +39,36 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Run build script
+      - name: Build and Push Docker Image (直接执行多架构编译)
         run: |
-          chmod +x build.sh
-          ./build.sh
+          # =================================================================
+          # 镜像名称配置（已为您定制好）
+          # =================================================================
+          IMAGE_NAME="lingganwu/electerm-web"
+          BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          
+          echo "----------------------------------------"
+          echo "开始构建多架构镜像并推送至 ${IMAGE_NAME}:latest ..."
+          echo "----------------------------------------"
+          
+          # 直接调用 docker buildx 编译，完全绕过原作者的 build.sh 脚本
+          docker buildx build \
+            --platform linux/amd64,linux/arm64 \
+            --build-arg BUILD_DATE=${BUILD_DATE} \
+            -t ${IMAGE_NAME}:latest \
+            -f Dockerfile.ubuntu \
+            --push \
+            .
+
+      - name: Add Version Tag (动态追加真实数字版本号标签)
+        if: env.REAL_VERSION != 'latest'
+        run: |
+          IMAGE_NAME="lingganwu/electerm-web"
+          echo "正在为已推送到云端的镜像追加具体版本号标签: ${{ env.REAL_VERSION }} ..."
+          
+          # 巧妙利用 imagetools，直接在 Docker Hub 远程追加标签，无需本地重新编译
+          docker buildx imagetools create \
+            --tag ${IMAGE_NAME}:${{ env.REAL_VERSION }} \
+            ${IMAGE_NAME}:latest
+            
+          echo "✨ 成功追加具体版本号标签: ${IMAGE_NAME}:${{ env.REAL_VERSION }}"
