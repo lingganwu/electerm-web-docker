@@ -1,10 +1,20 @@
 [English](README.md)
 
+<h1 class="aligncenter">
+    <a href="https://electerm.org">
+        <img src="https://github.com/electerm/electerm-resource/raw/master/static/images/electerm.png", alt="electerm" />
+    </a>
+</h1>
+
 # electerm-web-docker
 
 docker镜像的[electerm-web](https://github.com/electerm/electerm-web)
 
 [electerm](https://github.com/electerm/electerm) 是一款开源的终端/ssh/sftp/ftp/telnet/serialport/RDP/VNC/Spice 客户端（Linux、macOS、Windows、Android、HarmonyOS）。本镜像将基于浏览器的 [electerm-web](https://github.com/electerm/electerm-web) 打包，方便通过 Docker 自托管部署。
+
+## 关于 electerm
+
+除主流的 Windows / macOS / Linux / Android 外，electerm 还支持 HarmonyOS，以及较老的系统，如 Ubuntu 18、Windows 7、macOS 10+，以及 UOS、麒麟、龙架构（LoongArch，新旧世界）等国产 Linux 发行版。
 
 ## 使用
 
@@ -79,7 +89,7 @@ https://hub.docker.com/r/zxdong262/electerm-web
 - [electerm-harmony](https://github.com/electerm/electerm-harmony)：鸿蒙端应用
 - [electerm online](https://cloud.electerm.org)：公共免费在线 electerm 应用
 - [electerm AI](https://ai.electerm.org)：面向 electerm 用户的免费 AI
-- [theme.electerm.org](https://theme.electerm.org)：主题市场
+- [theme.electerm.org](https://theme.electerm.org)：主题在线编辑、实时预览与分享
 - [electerm demo](https://demo.electerm.org)：在线演示
 - [electerm deb repo](https://repos.electerm.org/deb)：Debian 软件源
 - [electerm rpm repo](https://repos.electerm.org/rpm)：RPM 软件源

@@ -1,10 +1,20 @@
 [中文](README_cn.md)
 
+<h1 class="aligncenter">
+    <a href="https://electerm.org">
+        <img src="https://github.com/electerm/electerm-resource/raw/master/static/images/electerm.png", alt="electerm" />
+    </a>
+</h1>
+
 # electerm-web-docker
 
 docker image of [electerm-web](https://github.com/electerm/electerm-web)
 
 [electerm](https://github.com/electerm/electerm) is an open-sourced terminal/ssh/sftp/ftp/telnet/serialport/RDP/VNC/Spice client (Linux, Mac, Windows, Android, HarmonyOS). This image packages the browser-based [electerm-web](https://github.com/electerm/electerm-web) for easy self-hosting with Docker.
+
+## About electerm
+
+Besides the mainstream Windows / macOS / Linux / Android platforms, electerm also supports HarmonyOS and older systems such as Ubuntu 18, Windows 7, macOS 10+, as well as domestic Linux distributions like UOS, Kylin, and LoongArch (both old-world and new-world).
 
 ## Use
 
@@ -79,7 +89,7 @@ https://hub.docker.com/r/zxdong262/electerm-web
 - [electerm-harmony](https://github.com/electerm/electerm-harmony): HarmonyOS app
 - [electerm online](https://cloud.electerm.org): Public free online electerm app
 - [electerm AI](https://ai.electerm.org): Free AI for electerm users
-- [theme.electerm.org](https://theme.electerm.org): Theme marketplace
+- [theme.electerm.org](https://theme.electerm.org): Theme live editor, live preview & sharing
 - [electerm demo](https://demo.electerm.org): Online demo of electerm
 - [electerm deb repo](https://repos.electerm.org/deb): Debian repo of electerm
 - [electerm rpm repo](https://repos.electerm.org/rpm): RPM repo of electerm
