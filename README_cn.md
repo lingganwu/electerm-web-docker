@@ -10,7 +10,7 @@
 
 docker镜像的[electerm-web](https://github.com/electerm/electerm-web)
 
-[electerm](https://github.com/electerm/electerm) 是一款开源的终端/ssh/sftp/ftp/telnet/serialport/RDP/VNC/Spice 客户端（Linux、macOS、Windows、Android、HarmonyOS）。本镜像将基于浏览器的 [electerm-web](https://github.com/electerm/electerm-web) 打包，方便通过 Docker 自托管部署。
+[electerm](https://github.com/electerm/electerm) 是一款开源的终端/ssh/sftp/ftp/telnet/serialport/RDP/VNC/Spice 客户端（Linux、macOS、Windows、Android、HarmonyOS、iOS）。本镜像将基于浏览器的 [electerm-web](https://github.com/electerm/electerm-web) 打包，方便通过 Docker 自托管部署。
 
 ## 关于 electerm
 
@@ -87,6 +87,7 @@ https://hub.docker.com/r/zxdong262/electerm-web
 - [electerm-web](https://github.com/electerm/electerm-web)：运行于浏览器（支持移动设备）的 web app 版本
 - [electerm-android](https://github.com/electerm/electerm-android)：安卓端应用
 - [electerm-harmony](https://github.com/electerm/electerm-harmony)：鸿蒙端应用
+- [electerm-ios](https://github.com/electerm/electerm-ios)：iOS 端应用
 - [electerm online](https://cloud.electerm.org)：公共免费在线 electerm 应用
 - [electerm AI](https://ai.electerm.org)：面向 electerm 用户的免费 AI
 - [theme.electerm.org](https://theme.electerm.org)：主题在线编辑、实时预览与分享
@@ -94,6 +95,7 @@ https://hub.docker.com/r/zxdong262/electerm-web
 - [electerm deb repo](https://repos.electerm.org/deb)：Debian 软件源
 - [electerm rpm repo](https://repos.electerm.org/rpm)：RPM 软件源
 - [electerm-locales](https://github.com/electerm/electerm-locales)：多语言/国际化文件
+- [Apple App Store](https://apps.apple.com/cn/app/electerm/id6792971552)
 - [华为应用市场](https://appgallery.huawei.com/app/detail?id=org.electerm.electerm)
 - [Microsoft Store](https://www.microsoft.com/store/apps/9NCN7272GTFF)
 - [Snap Store](https://snapcraft.io/electerm)
